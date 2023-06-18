@@ -1,6 +1,6 @@
 pipeline {
     // add your slave label name
-    agent { label 'my_maven_slave'}
+    agent { label 'tomcat_install2'}
     tools{
         maven 'maven3.8.6'
     }
@@ -8,7 +8,7 @@ pipeline {
         stage ('Checkout SCM') {
 
             steps {
-          	    
+          /// git branch: 'main', url: 'https://github.com/ElevenDevOps/eleven-devops-maven-repo.git'	    
 	     checkout scm
             }
         }
