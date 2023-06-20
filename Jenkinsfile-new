@@ -16,7 +16,7 @@ pipeline {
         stage ('Build') {
 
             steps {
-               sh 'mvn package'
+               sh 'mvn clean package'
             }
         }
         
@@ -24,7 +24,7 @@ pipeline {
 
             steps {
                sshagent{['tomcat-web-server']}{
-	      sh "scp -o StrintHostKeyChecking-no target/maven-web-application.war  ec2-user@16.16.184.118:/opt/tomcat9/webapps/"
+	      sh "scp -o StrictHostKeyChecking-no target/maven-web-application.war  ec2-user@13.49.80.51:/opt/tomcat9/webapps/"
                  
 	     
 	     }   
