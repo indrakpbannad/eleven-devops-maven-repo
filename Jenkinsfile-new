@@ -1,8 +1,8 @@
 pipeline {
     // add your slave label name
-    agent { label 'Indrakumar'}
+    agent { label 'slave_maven'}
     tools{
-        maven 'maven-test'
+        maven 'maven'
     }
     stages {
         stage ('Checkout SCM') {
@@ -17,15 +17,14 @@ pipeline {
 
             steps {
 		sh 'mvn clean package'
-		sh 'mvn package -Dmaven.plugin.validation=brief'
             }
         }
         
         stage ('deploy') {
 
             steps {
-               sshagent{['Agent_name']}{
-	      sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war  ec2-user@16.171.5.22:/opt/tomcat9/webapps/"
+               sshagent{['ssh']}{
+	      sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war  ec2-user@16.171.20.127:/opt/tomcat9/webapps/"
                  
 	     
 	     }   
