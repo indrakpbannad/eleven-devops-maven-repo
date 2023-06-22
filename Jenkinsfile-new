@@ -1,6 +1,6 @@
 pipeline {
     // add your slave label name
-    agent { label 'slave_maven'}
+    agent { label 'maven-node'}
     tools{
         maven 'maven'
     }
